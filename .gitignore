@@ -1,0 +1,14 @@
+/node_modules/
+/*.log
+
+/src/config.json
+/config.json
+
+/levelsdb
+/data
+/backups
+/servers
+/.env
+/srcold
+/testservers
+/pouch.js
