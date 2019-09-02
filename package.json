@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "The official Discord bot for BGCTMC WARRIORS",
   "main": "src/bot.js",
-  "repository": "https://github.com/Rayzr522/RayzrDevBot",
-  "author": "Forhad Ahmed<forhad.ahmed@outlook.com>",
+  "repository": "https://github.com/himalay34/mygitbot.git",
+  "author": "Forhad Ahmed <forhad.ahmed@outlook.com>",
   "license": "MIT",
   "scripts": {
     "start": "node src/bot.js",
