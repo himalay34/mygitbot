@@ -8,8 +8,13 @@ module.exports = class {
     }
 
     async run () {
-        global.logger.info('ready eventrunning')
+        global.log('ready eventrunning')
         let client = this.client;
+
+        client.guilds.forEach(guild => {
+            client.managers.get('server').getOrCreateServer(guild.id, {guildID: guild.id,name: guild.name, ownerID: guild.ownerID})
+        });
+
         let allServers = await client.managers
             .get("server")
             .getServers()

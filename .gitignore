@@ -5,6 +5,7 @@
 
 /levelsdb
 /data
+/.data
 /backups
 /servers
 /.env

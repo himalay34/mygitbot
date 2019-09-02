@@ -11,7 +11,7 @@ class DataManager extends Manager {
 
     preInit() {
         fse.mkdirpSync(global.settings.dataFolder);
-        this.db = global.db = new XPDB(path.resolve(global.settings.dataFolder, 'data/database'));
+        this.db = global.db = new XPDB(path.resolve(global.settings.dataFolder, 'database'));
     }
 }
 

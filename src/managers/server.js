@@ -1,11 +1,12 @@
 const path = require("path");
 const fse = require("fs-extra");
 const XPDB = require("xpdb");
-const PouchDB = require("pouchdb");
+const PouchDB = require('pouchdb').defaults({prefix: '.data/'});
 
 const Manager = require("./manager");
 
 class ServerManager extends Manager {
+  
   getName() {
     return "server";
   }
@@ -19,20 +20,15 @@ class ServerManager extends Manager {
       {
         _id: id,
         prefix: "",
-        autorole: "",
+        autorole: "User",
         mainChannelId: "",
         welcomeChannelId: "",
         serverLogChannelId: ""
       },
       options
     );
-
-    // const response = await pdb.put(serverOptions);
-    // if (response.ok) {
-    //   return serverOptions;
-    // }
     try {
-      const response = await pdb.put(serverOptions);
+      const response = await this.pdb.put(serverOptions);
       if (response.ok) {
         return serverOptions;
       }
@@ -43,7 +39,7 @@ class ServerManager extends Manager {
 
   async getServer(id) {
     try {
-      return await pdb.get(id);
+      return await this.pdb.get(id);
     } catch (err) {
       // Just return undefined if the profile isn't found
       if (err.status !== 404) {
@@ -68,7 +64,7 @@ class ServerManager extends Manager {
     // }, changes);
 
     try {
-      return await pdb.get(id).then(doc => {
+      return await this.pdb.get(id).then(doc => {
         var update = Object.assign(doc, changes);
         return pdb.put(update);
       });
@@ -79,7 +75,7 @@ class ServerManager extends Manager {
 
   async getServers() {
     try {
-      return await pdb.allDocs({ include_docs: true }); //.then(docs => docs.rows);
+      return await this.pdb.allDocs({ include_docs: true }); //.then(docs => docs.rows);
     } catch (err) {
       // Just return undefined if the profile isn't found
       throw err;
@@ -88,8 +84,8 @@ class ServerManager extends Manager {
 
   async deleteServer(id) {
     try {
-      return await pdb.get(id).then(function(doc) {
-        return pdb.remove(doc);
+      return await this.pdb.get(id).then(function(doc) {
+        return this.pdb.remove(doc);
       });
     } catch (err) {
       // Just return undefined if the profile isn't found
