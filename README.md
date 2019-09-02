@@ -138,3 +138,45 @@ Want to add even more code and fun styles to your GitHub Pages website? [Follow 
 ## Everything you need to know about GitHub
 
 Getting started is the hardest part. If there’s anything you’d like to know as you get started with GitHub, try searching [GitHub Help](https://help.github.com). Our documentation has tutorials on everything from changing your repository settings to configuring GitHub from your command line.
+
+
+
+-----------------------------------
+
+Special characters
+
+If your remote server requires authentication, you can include username and password in the input url string. Usernames and passwords should have the following special characters percent-encoded:
+
+https://support.brightcove.com/special-characters-usernames-and-passwords
+
+
+Character 	Percent-Encoded
+]	%5B
+[	%5D
+?	%3F
+/	%2F
+<	%3C
+~	%7E
+#	%23
+`	%6D
+!	%21
+@	%40
+$	%24
+%	%25
+^	%5E
+&	%26
+*	%2A
+(	%28
+)	%29
++	%2B
+=	%3D
+}	%7D
+|	%7C
+:	%3A
+"	%22
+;	%3B
+'	%27
+,	%2C
+>	%3E
+{	%7B
+space	%20
