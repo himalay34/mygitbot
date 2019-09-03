@@ -63,3 +63,4 @@ exports.formatDate = (date) =>
 exports.fixISO = str => {
   return str.substr(0,4) + "-" + str.substr(4,2) + "-" + str.substr(6,5) + ":" + str.substr(11,2) + ":" +  str.substr(13)
 }
+

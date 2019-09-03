@@ -22,9 +22,10 @@ global.settings = {
 };
 
 global.log = (data) =>{
-  console.log(chalk.cyan('-*-'.repeat(17)))
+  console.log('\n')
+  console.log(chalk.red('start =>')+chalk.cyan('-*-'.repeat(16)))
   console.log(chalk.yellow(data))
-  console.log(chalk.cyan('*-*'.repeat(17)))
+  console.log(chalk.gray('/end ')+chalk.cyan('*-*'.repeat(17)+'\n'))
 }
 global.factory = require("./factory");
 
@@ -104,12 +105,12 @@ bot.on("disconnect", () => {
 });
 
 bot.login(config.token).then( ()=>{
-  console.log('logged in')
+  //console.log('logged in bingoooooo')
   // add guilds to db here
-  //const guildList = bot.guilds.keyArray();
-  //for (let ix = 0; ix < guildList.length; ix++) {
-  // console.log(guildList[ix])//guildID
-  //}
+  bot.guilds.forEach(async(guild) => {
+    global.log("loggedin successfull")
+    bot.managers.get('server').getOrCreateServer(guild.id, {guildID: guild.id,name: guild.name, ownerID: guild.ownerID})
+  })
 
 });
 
