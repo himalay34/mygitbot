@@ -106,7 +106,6 @@ bot.on("disconnect", () => {
 });
 
 bot.login(config.token).then( ()=>{
-  //console.log('logged in bingoooooo')
   // add guilds to db here
   bot.guilds.forEach(async(guild) => {
     console.log('adding server to db . ID: '+guild.id)

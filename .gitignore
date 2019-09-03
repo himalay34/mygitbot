@@ -1,7 +1,6 @@
 /node_modules/
 /*.log
 /log.txt
-/.data*
 /store
 /levelsdb
 /data
@@ -12,3 +11,12 @@
 /srcold
 /testservers
 /pouch.js
+# exclude everything
+data/*
+# exception to the rule
+!data/.gitkeep 
+
+# exclude everything
+store/*
+# exception to the rule
+!store/.gitkeep 

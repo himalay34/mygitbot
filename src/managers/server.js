@@ -29,6 +29,7 @@ class ServerManager extends Manager {
     try {
       const response = await this.pdb.put(serverOptions);
       if (response.ok) {
+        console.log(response)
         return serverOptions;
       }
     } catch (error) {

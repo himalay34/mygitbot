@@ -5,6 +5,7 @@ const helmet = require('helmet')
 const app = express()
 const PouchDB = require('pouchdb')
 const PORT = process.env.PORT || 3000;
+let utils = require('./utils')
 
 let dir = path.join(__dirname, 'store/')
 // create pouchdb database in .data
@@ -17,13 +18,12 @@ app.use(helmet())
 
 // Serve public assets
 app.use(express.static('public'));
-
 app.get('/ping', function(request, response)
 {
     let datetime = new Date();
     let pcode = Math.floor(Math.random() * 10239571);
     response.send(`Ping Code: ${pcode}`);
-    console.log('Ping recieved [' + util.formatShortDate(datetime) + ', ' + util.formatShortTime(datetime) + ']');
+    console.log('Ping recieved [' + utils.formatShortDate(datetime) + ', ' + utils.formatShortTime(datetime) + ']');
 }); 
 
 app.use('/', require('express-pouchdb')(TempPouchDB))
