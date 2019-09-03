@@ -9,7 +9,7 @@ exports.run = (bot, msg, args, fn) => {
 
     message.delete().catch(O_o=>{}); 
 
-    message.replay(randomAlternative)
+    message.channel.send(fn.embed().setDescription(randomAlternative));
 };
 
 exports.info = {
