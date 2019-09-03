@@ -11,7 +11,7 @@ class ConfigManager extends Manager {
     this._configPath = path.resolve(global.settings.baseDir, "botConfig.json");
     this._examplePath = path.resolve(
       global.settings.baseDir,
-      "config-example.json"
+      "botConfig-example.json"
     );
 
     this.loadConfig();
