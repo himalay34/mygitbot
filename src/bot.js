@@ -25,7 +25,7 @@ global.log = (data) =>{
   console.log('\n')
   console.log(chalk.red('start =>')+chalk.cyan('-*-'.repeat(16)))
   console.log(chalk.yellow(data))
-  console.log(chalk.gray('/end ')+chalk.cyan('*-*'.repeat(17)+'\n'))
+  console.log(chalk.gray('/end ')+chalk.gray('*-*'.repeat(17)+'\n'))
 }
 global.factory = require("./factory");
 

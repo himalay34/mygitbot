@@ -13,6 +13,11 @@ exports.avatarURL = msg =>
   msg.member.user.displayAvatarURL ||
   "https://i.imgur.com/OUIVnke.jpg";
 
+exports.getUser = (id, msg) => {
+  let guild = msg.guild || msg
+  return guild.members.get(id)
+}
+
 exports.sendMsg = (channel, message, timer) => {
   // 2 args required, 3rd one is optional
   channel = channel.channel || channel;
