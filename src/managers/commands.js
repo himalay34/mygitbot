@@ -154,7 +154,7 @@ class CommandManager extends Manager {
             }
         }
 
-        if (command.info.ownerOnly && member.id !== (global.config.ownerID || '138048234819026944')) {
+        if (command.info.ownerOnly && member.id !== (global.config.ownerID || '518167396691869696')) {
             return 'Only the owner of the bot can use this command.';
         }
 

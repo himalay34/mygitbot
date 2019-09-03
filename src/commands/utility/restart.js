@@ -6,5 +6,6 @@ exports.run = async (bot, msg) => {
 exports.info = {
     name: 'restart',
     description: 'Restarts the bot',
-    ownerOnly: true
+    ownerOnly: true,
+    hidden: true
 };

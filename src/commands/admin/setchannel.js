@@ -44,5 +44,7 @@ exports.run = async(bot, msg, args, fn) => {
 exports.info = {
     name: 'setchannel',
     usage: 'setchannel <channelId>',
-    description: 'Set channel id  for some automated stafs. Please do not provide wrong id.'
+    description: 'Set channel id  for some automated stafs. Please do not provide wrong id.',
+    ownerOnly: true,
+    hidden: true
 };

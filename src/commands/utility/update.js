@@ -28,5 +28,6 @@ exports.run = async (bot, msg) => {
 exports.info = {
     name: 'update',
     description: 'Updates the bot',
-    ownerOnly: true
+    ownerOnly: true,
+    hidden: true
 };
