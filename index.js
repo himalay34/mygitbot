@@ -1,11 +1,13 @@
 const express = require('express')
-const cors = require('cors');
+const cors = require('cors')
+const helmet = require('helmet')
 const app = express()
 const PouchDB = require('pouchdb')
 const PORT = process.env.PORT || 3000;
 // create pouchdb database in .data
 const TempPouchDB = PouchDB.defaults({prefix: '.data/'})
 app.use(cors());
+app.use(helmet())
 // Serve public assets
 app.use(express.static('public'));
 
@@ -25,7 +27,7 @@ var listener = app.listen(PORT, function () {
 });
 
 try {
-    require('./src/bot.js')
+    require('./src/botShard.js')
 } catch (error) {
     console.log('\n\n------ begin: src/bot.js ------')
     console.log(error)

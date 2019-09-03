@@ -108,7 +108,7 @@ bot.login(config.token).then( ()=>{
   //console.log('logged in bingoooooo')
   // add guilds to db here
   bot.guilds.forEach(async(guild) => {
-    global.log("loggedin successfull")
+    console.log('adding server to db . ID: '+guild.id)
     bot.managers.get('server').getOrCreateServer(guild.id, {guildID: guild.id,name: guild.name, ownerID: guild.ownerID})
   })
 

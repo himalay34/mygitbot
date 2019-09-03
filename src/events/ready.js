@@ -51,13 +51,12 @@ module.exports = class {
               }
           })
           
-          client.user.setActivity(`www.bgctmcwarriors.ml | ${config.prefix}help`);
+          client.user.setActivity(`bgctmcwarriors.ml | ${config.prefix}help`);
           }; // end updateDisplay
         //
         client.setInterval(updateDisplay, 15000);
         updateDisplay();
 
-        
         client.generateInvite([
             "MANAGE_MESSAGES",
             "MANAGE_CHANNELS",
