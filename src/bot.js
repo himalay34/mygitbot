@@ -22,7 +22,9 @@ global.settings = {
 };
 
 global.log = (data) =>{
+  console.log(chalk.cyan('-'.repeat(17)))
   console.log(chalk.yellow(data))
+  console.log(chalk.cyan('-'.repeat(17)))
 }
 global.factory = require("./factory");
 
