@@ -25,7 +25,7 @@ var listener = app.listen(PORT, function () {
 });
 
 try {
-    //require('./src/bot.js')
+    require('./src/bot.js')
 } catch (error) {
     console.log('\n\n------ begin: src/bot.js ------')
     console.log(error)
