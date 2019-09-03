@@ -100,7 +100,7 @@ bot.on("error", console.error);
 bot.on("disconnect", () => {
   processExiting ||
     setTimeout(() => {
-      bot.user || (bot.destroy(), bot.login(config.tokens.discord));
+      bot.user || (bot.destroy(), bot.login(config.tokens));
     }, 15000);
 });
 
