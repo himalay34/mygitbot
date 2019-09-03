@@ -44,6 +44,6 @@ exports.info = {
     name: 'users',
     usage: 'users [limit] [offset]',
     description: 'Show server user list. Limit,offset not yet implimented',
-    hidden: false,
+    hidden: true,
     group: 'admin'
 };
