@@ -8,7 +8,7 @@ class ConfigManager extends Manager {
   }
 
   preInit() {
-    this._configPath = path.resolve(global.settings.baseDir, "config.json");
+    this._configPath = path.resolve(global.settings.baseDir, "botConfig.json");
     this._examplePath = path.resolve(
       global.settings.baseDir,
       "config-example.json"
@@ -45,7 +45,7 @@ class ConfigManager extends Manager {
   save() {
     fse.writeFileSync(this._configPath, JSON.stringify(this._config, null, 4));
   }
-
+  
 }
 
 module.exports = ConfigManager;

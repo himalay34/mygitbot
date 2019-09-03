@@ -1,18 +1,21 @@
 {
-  "name": "BGCTMC WARRIORS Bot",
-  "prefix": "-",
-  "color": [
-    185,
-    220,
-    255
-  ],
-  "token": "",
-  "joinMessage": "Welcome to the offical RayzrDev server, {user}!",
-  "statusFormat": "🙎‍ Members: {members} [ Users: {users}, Bot: {bots} ] \n🌍 Online: {online} | Server Link - https://discord.gg/9xarpaf",
-  "ownerID": "518167396691869696",
-  "mainChannel": "617711906471411712",
-  "countingChannel": "617711578078380042",
-  "couchdb": {
-    "uuid": "e412d225-90f0-4411-9ed2-24807088ef40"
+  "admins": {
+    "admin": "-pbkdf2-cdb7d00f372c29dcb2251a0584d70bae7e2704aa,15a11d1081eb1381c61be1c01c413d1291491241681991f5,10",
+    "forhad": "-pbkdf2-ef66a115b0ca986683a7abf361db921256a7b6d5,1281f815216f1c218d1d512c1f418719616d13316513313f,10"
+  },
+  "couch_httpd_auth": {
+    "allow_persistent_cookies": true
+  },
+  "vendor": {
+    "name": "Forhad Ahmed"
+  },
+  "httpd": {
+    "enable_cors": true
+  },
+  "cors": {
+    "origins": "*",
+    "credentials": true,
+    "headers": "accept, authorization, content-type, origin, referer",
+    "methods": "GET, PUT, POST, HEAD, DELETE"
   }
 }
