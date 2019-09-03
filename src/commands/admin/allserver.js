@@ -10,6 +10,5 @@ exports.info = {
     name: 'allserver',
     usage: 'example <some> [args]',
     description: 'Does some example things',
-    group: 'info',
-    dirname: __dirname
+    group: 'info'
 };

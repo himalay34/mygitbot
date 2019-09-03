@@ -7,6 +7,7 @@ const asyncGitPull = () => new Promise((resolve, reject) => {
 });
 
 exports.run = async (bot, msg) => {
+    msg.delete();
     const status = await msg.channel.send(':arrows_counterclockwise: | Updating...');
 
     if (!fs.existsSync(path.resolve('.', '.git'))) {
