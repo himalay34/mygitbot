@@ -5,9 +5,10 @@ const app = express()
 const PouchDB = require('pouchdb')
 const PORT = process.env.PORT || 3000;
 // create pouchdb database in .data
-const TempPouchDB = PouchDB.defaults({prefix: '.data'})
+const TempPouchDB = PouchDB.defaults({prefix: 'store/'})
 app.use(cors());
 app.use(helmet())
+
 // Serve public assets
 app.use(express.static('public'));
 

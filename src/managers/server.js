@@ -1,7 +1,7 @@
 const path = require("path");
 const fse = require("fs-extra");
 const XPDB = require("xpdb");
-const PouchDB = require('pouchdb').defaults({prefix: '.data'});
+const PouchDB = require('pouchdb').defaults({prefix: 'store/'});
 
 const Manager = require("./manager");
 
