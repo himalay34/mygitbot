@@ -1,7 +1,7 @@
 /node_modules/
 /*.log
 /log.txt
-/src/config.json
+/config.json
 
 /levelsdb
 /data

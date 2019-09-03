@@ -43,11 +43,13 @@ const managers = (bot.managers = new ManagerHandler()
   .add('ranks/levels')
   //.add('ranks/autorole')
 );
+
 // init manager
 managers.preInit();
 
 const config = (global.config = managers.get("config").config);
 managers.init(bot);
+
 // do some nesty works
 bot.on("reloadConfigs", async () => {
   let allServers = await managers
@@ -79,7 +81,6 @@ bot.on("reloadConfigs", async () => {
   });
 })()
 
-
 let processExiting = false;
 
 process.on("exit", () => {
@@ -92,7 +93,9 @@ process.on('unhandledRejection', err => {
 });
 
 bot.on("warn", console.warn);
+
 bot.on("error", console.error);
+
 bot.on("disconnect", () => {
   processExiting ||
     setTimeout(() => {
@@ -100,6 +103,14 @@ bot.on("disconnect", () => {
     }, 15000);
 });
 
-bot.login(config.token);
+bot.login(config.token).then( ()=>{
+  console.log('logged in')
+  // add guilds to db here
+  //const guildList = bot.guilds.keyArray();
+  //for (let ix = 0; ix < guildList.length; ix++) {
+  // console.log(guildList[ix])//guildID
+  //}
+
+});
 
 module.exports = bot;

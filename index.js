@@ -1,19 +1,13 @@
-const PouchDB = require('pouchdb').defaults({prefix: '.data/'});
-const express = require('express');
+const express = require('express')
 const cors = require('cors');
-const port = process.env.PORT || 3000;
-
-const app = express();
+const app = express()
+const PouchDB = require('pouchdb')
+const PORT = process.env.PORT || 3000;
+// create pouchdb database in .data
+const TempPouchDB = PouchDB.defaults({prefix: '.data/'})
 app.use(cors());
 // Serve public assets
 app.use(express.static('public'));
-
-const myLogger = function (req, res, next) {
-    //console.log(req)
-    next();
-};
-
-app.use(myLogger);
 
 app.get('/ping', function(request, response)
 {
@@ -23,12 +17,11 @@ app.get('/ping', function(request, response)
     console.log('Ping recieved [' + util.formatShortDate(datetime) + ', ' + util.formatShortTime(datetime) + ']');
 }); 
 
-app.use('/', require('express-pouchdb')(PouchDB));
+app.use('/', require('express-pouchdb')(TempPouchDB))
 
-global.pdb = new PouchDB('servers');
-//var listener = app.listen(process.env.PORT, function () {
-const listener = app.listen(port, function () {
-    console.log('Server is listening on port ' + listener.address().port);
+// listen for requests :)
+var listener = app.listen(PORT, function () {
+  console.log('Your pouchdb is listening on port ' + listener.address().port);
 });
 
 try {

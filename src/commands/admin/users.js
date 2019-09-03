@@ -1,5 +1,6 @@
 exports.run = async(bot, msg, args, fn) => {
-  msg.delete().catch(O_o=>{});
+  if (msg.deletable) msg.delete().catch(O_o=>{});
+  
   // fetch user old to new
   let data = []
   let users = await msg.guild.members.sort((a, b) => a.joinedAt - b.joinedAt).forEach(u=> {
