@@ -28,11 +28,11 @@ app.use('/', require('express-pouchdb')(PouchDB));
 global.pdb = new PouchDB('servers');
 //var listener = app.listen(process.env.PORT, function () {
 const listener = app.listen(port, function () {
-    console.log('Your pouchdb is listening on port ' + listener.address().port);
+    console.log('Server is listening on port ' + listener.address().port);
 });
 
 try {
-    require('./src/bot.js')
+    //require('./src/bot.js')
 } catch (error) {
     console.log('\n\n------ begin: src/bot.js ------')
     console.log(error)

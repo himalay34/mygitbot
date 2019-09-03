@@ -22,9 +22,9 @@ global.settings = {
 };
 
 global.log = (data) =>{
-  console.log(chalk.cyan('-'.repeat(17)))
+  console.log(chalk.cyan('-*-'.repeat(17)))
   console.log(chalk.yellow(data))
-  console.log(chalk.cyan('-'.repeat(17)))
+  console.log(chalk.cyan('*-*'.repeat(17)))
 }
 global.factory = require("./factory");
 
@@ -43,7 +43,7 @@ const managers = (bot.managers = new ManagerHandler()
   .add('ranks/levels')
   //.add('ranks/autorole')
 );
-
+// init manager
 managers.preInit();
 
 const config = (global.config = managers.get("config").config);
