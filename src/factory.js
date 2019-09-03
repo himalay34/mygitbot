@@ -1,4 +1,4 @@
-const { RichEmbed } = require("discord.js");
+const { RichEmbed, Collection } = require("discord.js");
 
 exports.embed = options =>
   new RichEmbed(options)
