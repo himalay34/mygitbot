@@ -30,7 +30,7 @@ app.use('/', require('express-pouchdb')(TempPouchDB))
 
 // listen for requests :)
 var listener = app.listen(PORT, function () {
-  console.log('Your pouchdb is listening on port ' + listener.address().port);
+  console.log('Server is listening on port ' + listener.address().port);
 });
 
 try {
