@@ -18,7 +18,8 @@ global.logger = winston.createLogger({
 
 global.settings = {
   baseDir: path.resolve(__dirname, ".."),
-  dataFolder: path.resolve(__dirname, "..", "data")
+  dataFolder: path.resolve(__dirname, "..", "data"),
+  store: path.resolve(__dirname, "..", "store")
 };
 
 global.log = (data) =>{

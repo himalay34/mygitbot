@@ -44,10 +44,12 @@ module.exports = class {
           
               // get main channel
               // first check main channel available or not in config
-              let mainChannel = guild.channels.get(gConfig.mainChannelId)
-              if(mainChannel){
-                  // Check first to not spam the crap out of audit-log
-                  if(mainChannel.topic !== topic) mainChannel.setTopic(topic);
+              if(gConfig.mainChannelId){
+                  let mainChannel = guild.channels.get(gConfig.mainChannelId)
+                  if(mainChannel){
+                      // Check first to not spam the crap out of audit-log
+                      if(mainChannel.topic !== topic) mainChannel.setTopic(topic);
+                  }
               }
           })
           

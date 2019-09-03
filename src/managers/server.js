@@ -1,7 +1,6 @@
 const path = require("path");
-const fse = require("fs-extra");
-const XPDB = require("xpdb");
-const PouchDB = require('pouchdb').defaults({prefix: 'store/'});
+let dir = path.resolve(global.settings.baseDir,'store')
+const PouchDB = require('pouchdb').defaults({prefix: dir+'/'});
 
 const Manager = require("./manager");
 

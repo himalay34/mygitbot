@@ -1,11 +1,17 @@
 const express = require('express')
+const path = require('path')
 const cors = require('cors')
 const helmet = require('helmet')
 const app = express()
 const PouchDB = require('pouchdb')
 const PORT = process.env.PORT || 3000;
+
+let dir = path.join(__dirname, 'store/')
 // create pouchdb database in .data
-const TempPouchDB = PouchDB.defaults({prefix: 'store/'})
+const TempPouchDB = PouchDB.defaults({prefix: dir})
+
+global.PouchDB = TempPouchDB
+
 app.use(cors());
 app.use(helmet())
 
