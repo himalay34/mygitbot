@@ -4,16 +4,18 @@ exports.run = async(bot, msg, args, fn) => {
             .getServers()
             .catch(console.log)
 
-    let embed = fn.embed().setTitle("Servers")
+    let embed = fn.embed().setTitle("Servers");
     data.rows.forEach(row => {
-        
+        embed.addField("ID", `\`\`\` ${row.id} \`\`\``)
+        embed.addField("Name", `\`\`\` ${row.doc.name} \`\`\``)
+        msg.channel.send(embed)
     })
-    msg.channel.send(JSON.stringify(data.rows))
 };
 
 exports.info = {
     name: 'allserver',
-    usage: 'example <some> [args]',
-    description: 'Does some example things',
-    group: 'info'
+    usage: 'allserver',
+    description: 'Show all the server that BGCTMC WARRIORS bot joins',
+    group: 'info',
+    ownerOnly: true,
 };

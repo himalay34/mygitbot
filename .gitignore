@@ -11,6 +11,7 @@
 /.env
 /srcold
 /testservers
+/package-lock.json
 # exclude everything
 data/*
 # exception to the rule

@@ -1,4 +1,4 @@
-exports.run = (bot, msg, args, fn) => {
+exports.run = async(bot, msg, args, fn) => {
     msg.delete();
 
     if(!args[0]) throw `You must provide on or off as argument but you provides nothing. \n Example: ${global.config.prefix}auto-topic on`
@@ -11,7 +11,7 @@ exports.run = (bot, msg, args, fn) => {
         .updateServer(msg.guild.id, { allowSetTopic: args[0] })
         .then(doc => {
             msg.channel.send(
-            `:white_check_mark: Done! Auto topic is "${args[0]}" now`
+            `:white_check_mark: Done! Auto topic is "${args[0]}" now.`
             );
         })
         .catch(console.log);
@@ -27,8 +27,8 @@ exports.run = (bot, msg, args, fn) => {
 
 exports.info = {
     name: 'auto-topic',
-    usage: 'auto-topic <1|0>',
-    description: 'Allow bot to set auto topic for main channel of the server, default on',
+    usage: 'auto-topic <on|off>',
+    description: 'Allow bot to set auto topic for main channel of the server, default "on"',
     group: 'info',
     ownerOnly: true
 };
