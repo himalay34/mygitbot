@@ -3,6 +3,11 @@ exports.run = async(bot, msg, args, fn) => {
             .get("server")
             .getServers()
             .catch(console.log)
+
+    let embed = fn.embed().setTitle("Servers")
+    data.rows.forEach(row => {
+        
+    })
     msg.channel.send(JSON.stringify(data.rows))
 };
 

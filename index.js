@@ -11,8 +11,6 @@ let dir = path.join(__dirname, 'store/')
 // create pouchdb database in .data
 const TempPouchDB = PouchDB.defaults({prefix: dir})
 
-global.PouchDB = TempPouchDB
-
 app.use(cors());
 app.use(helmet())
 
@@ -27,6 +25,8 @@ app.get('/ping', function(request, response)
 }); 
 
 app.use('/', require('express-pouchdb')(TempPouchDB))
+//import all dbs here to use with fauxton later
+require('./pouch.js')
 
 // listen for requests :)
 var listener = app.listen(PORT, function () {
@@ -36,7 +36,7 @@ var listener = app.listen(PORT, function () {
 try {
     require('./src/botShard.js')
 } catch (error) {
-    console.log('\n\n------ begin: src/bot.js ------')
+    console.log('\n\n------Bot initialization error begin: src/bot.js ------')
     console.log(error)
-    console.log('------ end:  ------\n\n')
+    console.log('------ Bot initialization error end:  ------\n\n')
 }
