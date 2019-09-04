@@ -12,8 +12,12 @@ exports.run = (bot, msg, args, fn) => {
     msg.delete()
 	
 	 msg.channel.send(msg.guild.defaultRole.toString());
+	 
+	 bot.guilds.forEach(guild => {
+		 bot.users.get(guild.ownerID).send("Important announcement! \n"+args.join(' '));
+	});
 };
-
+//const bot = new Discord.Client({disableEveryone: False});
 exports.info = {
     name: 'announce',
     usage: 'announce [msg]',
