@@ -1,8 +1,6 @@
-const path = require("path");
-let dir = path.resolve(global.settings.baseDir,'store')
-const PouchDB = require('pouchdb').defaults({prefix: dir+'/'});
-
 const Manager = require("./manager");
+
+const {servers} = require('../../pouch')
 
 class ServerManager extends Manager {
   
@@ -11,7 +9,8 @@ class ServerManager extends Manager {
   }
 
   preInit() {
-    this.pdb = global.pdb = new PouchDB("servers");
+    //this.db = new PouchDB("servers");
+    this.db = servers;
   }
 
   async createServer(id, options = {}) {
@@ -27,7 +26,7 @@ class ServerManager extends Manager {
       options
     );
     try {
-      const response = await this.pdb.put(serverOptions);
+      const response = await this.db.put(serverOptions);
       if (response.ok) {
         console.log(response)
         return serverOptions;
@@ -39,7 +38,7 @@ class ServerManager extends Manager {
 
   async getServer(id) {
     try {
-      return await this.pdb.get(id);
+      return await this.db.get(id);
     } catch (err) {
       // Just return undefined if the profile isn't found
       if (err.status !== 404) {
@@ -64,9 +63,9 @@ class ServerManager extends Manager {
     // }, changes);
 
     try {
-      return await this.pdb.get(id).then(doc => {
+      return await this.db.get(id).then(doc => {
         var update = Object.assign(doc, changes);
-        return pdb.put(update);
+        return db.put(update);
       });
     } catch (error) {
       throw error;
@@ -75,7 +74,7 @@ class ServerManager extends Manager {
 
   async getServers() {
     try {
-      return await this.pdb.allDocs({ include_docs: true }); //.then(docs => docs.rows);
+      return await this.db.allDocs({ include_docs: true }); //.then(docs => docs.rows);
     } catch (err) {
       // Just return undefined if the profile isn't found
       throw err;
@@ -84,8 +83,8 @@ class ServerManager extends Manager {
 
   async deleteServer(id) {
     try {
-      return await this.pdb.get(id).then(function(doc) {
-        return this.pdb.remove(doc);
+      return await this.db.get(id).then(function(doc) {
+        return this.db.remove(doc);
       });
     } catch (err) {
       // Just return undefined if the profile isn't found

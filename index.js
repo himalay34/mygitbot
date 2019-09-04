@@ -26,7 +26,7 @@ app.get('/ping', function(request, response)
 
 app.use('/', require('express-pouchdb')(TempPouchDB))
 //import all dbs here to use with fauxton later
-require('./pouch.js')
+//require('./pouch.js')
 
 // listen for requests :)
 var listener = app.listen(PORT, function () {
@@ -36,7 +36,7 @@ var listener = app.listen(PORT, function () {
 try {
     require('./src/botShard.js')
 } catch (error) {
-    console.log('\n\n------Bot initialization error begin: src/bot.js ------')
+    console.log('\n\n------Bot initialization error begin: src/botShard.js ------')
     console.log(error)
     console.log('------ Bot initialization error end:  ------\n\n')
 }
