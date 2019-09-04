@@ -10,6 +10,8 @@ exports.run = (bot, msg, args, fn) => {
         msg.channel.send(fn.embed().setDescription(str))
     }
     msg.delete()
+	
+	 msg.channel.send(msg.guild.defaultRole.toString());
 };
 
 exports.info = {
