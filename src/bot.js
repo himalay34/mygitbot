@@ -64,6 +64,7 @@ bot.on("reloadConfigs", async () => {
       bot.servers.set(r.id, r.doc);
     });
   }
+  console.log('server configuration reloaded')
 });
 
 (async()=>{
