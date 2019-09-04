@@ -19,6 +19,7 @@ class ServerManager extends Manager {
         _id: id,
         prefix: "",
         autorole: "User",
+        allowSetTopic: true,
         mainChannelId: "",
         welcomeChannelId: "",
         serverLogChannelId: ""
@@ -65,7 +66,7 @@ class ServerManager extends Manager {
     try {
       return await this.db.get(id).then(doc => {
         var update = Object.assign(doc, changes);
-        return db.put(update);
+        return this.db.put(update);
       });
     } catch (error) {
       throw error;
@@ -82,9 +83,10 @@ class ServerManager extends Manager {
   }
 
   async deleteServer(id) {
+    let self = this
     try {
       return await this.db.get(id).then(function(doc) {
-        return this.db.remove(doc);
+        return self.db.remove(doc);
       });
     } catch (err) {
       // Just return undefined if the profile isn't found

@@ -53,7 +53,6 @@ module.exports = class {
               }
           })
           
-          client.user.setActivity(`bgctmcwarriors.ml | ${config.prefix}help`);
           }; // end updateDisplay
         //
         client.setInterval(updateDisplay, 15000);
@@ -67,6 +66,8 @@ module.exports = class {
             ])
             .then(invite => console.log(chalk.blue(invite))); // end generate invite
             
-        global.log("Bot has loaded successfully. We're in business!")
+        client.user.setActivity(`bgctmcwarriors.ml | ${config.prefix}help`);
+        
+        global.log(`${client.user.username} Bot has loaded successfully. We're in business!`)
     } // end run
 }

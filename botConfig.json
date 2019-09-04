@@ -10,9 +10,5 @@
   "joinMessage": "Welcome to the offical BGCTMC WARRIORS server, {user}!",
   "statusFormat": "🙎‍ Members: {members} [ Users: {users}, Bot: {bots} ] \n🌍 Online: {online} | Server Link - https://discord.gg/9xarpaf",
   "ownerID": "518167396691869696",
-  "mainChannel": "617711906471411712",
-  "countingChannel": "617711578078380042",
-  "couchdb": {
-    "uuid": "e412d225-90f0-4411-9ed2-24807088ef40"
-  }
+  "mainChannel": "617711906471411712"
 }

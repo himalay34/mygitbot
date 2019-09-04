@@ -18,10 +18,10 @@ app.use(helmet())
 app.use(express.static('public'));
 app.get('/ping', function(request, response)
 {
-    let datetime = new Date();
-    let pcode = Math.floor(Math.random() * 10239571);
-    response.send(`Ping Code: ${pcode}`);
-    console.log('Ping recieved [' + utils.formatShortDate(datetime) + ', ' + utils.formatShortTime(datetime) + ']');
+  let datetime = new Date();
+  let pcode = Math.floor(Math.random() * 10239571);
+  response.send(`Ping Code: ${pcode}`);
+  console.log('Ping recieved [' + utils.formatShortDate(datetime) + ', ' + utils.formatShortTime(datetime) + ']');
 }); 
 
 app.use('/', require('express-pouchdb')(TempPouchDB))
@@ -36,7 +36,7 @@ var listener = app.listen(PORT, function () {
 try {
     require('./src/botShard.js')
 } catch (error) {
-    console.log('\n\n------Bot initialization error begin: src/botShard.js ------')
-    console.log(error)
-    console.log('------ Bot initialization error end:  ------\n\n')
+  console.log('\n\n------Bot initialization error begin: src/botShard.js ------')
+  console.log(error)
+  console.log('------ Bot initialization error end:  ------\n\n')
 }

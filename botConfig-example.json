@@ -11,6 +11,5 @@
     "joinMessage": "Welcome to the offical BGCTMC WARRIORS server, {user}!",
     "statusFormat": "Members: {members} | Online: {online} | Please mention the @SharpBot Support role in #general-support for help with SharpBot.",
     "ownerID": "",
-    "mainChannel": "",
-    "countingChannel": ""
+    "mainChannel": ""
 }

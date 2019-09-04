@@ -108,8 +108,15 @@ bot.on("disconnect", () => {
 bot.login(config.token).then( ()=>{
   // add guilds to db here
   bot.guilds.forEach(async(guild) => {
-    console.log('adding server to db . ID: '+guild.id)
-    bot.managers.get('server').getOrCreateServer(guild.id, {guildID: guild.id,name: guild.name, ownerID: guild.ownerID})
+    //bot.managers.get('server').deleteServer(guild.id).catch(console.log)
+    //console.log(`Adding ${guild.name} to ${bot.user.username} Bot server database.`)
+    bot.managers.get('server').getOrCreateServer(guild.id, {guildID: guild.id,name: guild.name, ownerID: guild.ownerID}).then(doc => {
+      if(doc.ok){
+        console.log(`Adding ${guild.name} to ${bot.user.username} Bot server database.`)
+      } else {
+        console.log(guild.id+' exist. no need to add it again.')
+      }
+    }).catch(console.log)
   })
 
 });
