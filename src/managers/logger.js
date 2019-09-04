@@ -2,7 +2,7 @@ const Manager = require('./manager');
 
 class LoggerFilter extends Manager {
     init(bot) {
-        console.log("logger")
+        console.log("need to impliment logger,need some study")
     }
 }
 
