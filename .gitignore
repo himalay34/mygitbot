@@ -10,7 +10,6 @@
 /.env
 /srcold
 /testservers
-/pouch.js
 # exclude everything
 data/*
 # exception to the rule
