@@ -2,9 +2,7 @@
   "name": "BGCTMC WARRIORS Bot",
   "prefix": "-",
   "color": [
-    185,
-    220,
-    255
+    185,220,255
   ],
   "token": "",
   "joinMessage": "Welcome to the offical BGCTMC WARRIORS server, {user}!",
