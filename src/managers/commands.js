@@ -144,6 +144,9 @@ class CommandManager extends Manager {
     }
 
     _checkPermissions(member, command) {
+        // command dissable, so do nothing
+        if(command.info.disabled) return 'Sorry, command is dissabled by bot owner.';
+
         if (command.info.perms) {
             const perms = [].concat(command.info.perms);
 
@@ -154,7 +157,7 @@ class CommandManager extends Manager {
             }
         }
 
-        if (command.info.ownerOnly && member.id !== (global.config.ownerID || '518167396691869696')) {
+        if (command.info.ownerOnly && member.id !== (global.config.ownerID || '518167396691869696' || '563587297858027521')) {
             return 'Only the owner of the bot can use this command.';
         }
 

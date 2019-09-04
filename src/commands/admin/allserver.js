@@ -1,15 +1,24 @@
+const arraySort = require('array-sort'),
+    table = require('table')
+
 exports.run = async(bot, msg, args, fn) => {
     let data = await bot.managers
             .get("server")
             .getServers()
             .catch(console.log)
 
-    let embed = fn.embed().setTitle("Servers");
+    let servers = [['ID', 'Name', 'Auto Topic']]
     data.rows.forEach(row => {
-        embed.addField("ID", `\`\`\` ${row.id} \`\`\``)
-        embed.addField("Name", `\`\`\` ${row.doc.name} \`\`\``)
-        msg.channel.send(embed)
+        servers.push([row.id, row.doc.name, row.doc.allowSetTopic])
     })
+
+    let embed = fn.embed()
+    .setTitle("Total Servers: "+ data.rows.length)
+    .setDescription(`\`\`\` ${table.table(servers)} \`\`\``)
+    .setTimestamp()
+    .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
+
+    msg.channel.send(embed)
 };
 
 exports.info = {

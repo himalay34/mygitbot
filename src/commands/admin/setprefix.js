@@ -38,7 +38,7 @@ exports.run = async (bot, msg, args, fn) => {
 };
 
 exports.info = {
-  name: "setprefixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  name: "setprefix",
   usage: "setprefix <prefix>",
   description: `Set custom prefix for ${global.config.name}. Default prefix is "${global.config.prefix}"`,
   group: "admin",
