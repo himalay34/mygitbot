@@ -68,3 +68,13 @@ exports.formatDate = (date) =>
 exports.fixISO = str => {
   return str.substr(0,4) + "-" + str.substr(4,2) + "-" + str.substr(6,5) + ":" + str.substr(11,2) + ":" +  str.substr(13)
 }
+
+exports.randomItem = (array)  =>
+{
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+exports.randomColor = () =>
+{
+    return "#" + Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
+}
