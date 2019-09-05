@@ -78,3 +78,10 @@ exports.randomColor = () =>
 {
     return "#" + Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
 }
+
+exports.emoji =(bot,name) => {
+  let emo = bot.emojis.find(emoji => emoji.name === name)
+  if(emo) 
+    return emo.toString();
+}
+

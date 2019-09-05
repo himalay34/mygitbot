@@ -2,7 +2,6 @@ const api = 'http://bgctmcwarriors.ml/api/player?tag='//2Y0L98GRV
 const got = require('got');
 const axios = require('axios');
 
-
 exports.run = async(bot, msg, args, fn) => {
   const embed = fn.embed()
       
@@ -44,12 +43,23 @@ exports.run = async(bot, msg, args, fn) => {
         .addField(`***Defense Wins***`, `${data.defenseWins}`, true)
         .addField('***Donations***',  `:arrow_up: ${data.donations}`, true)
         .addField('***Donations Received***', `:arrow_down: ${data.donationsReceived}`, true)
-        .addField('***D:R Ratio***', '≈' + Math.round(data.donations/data.donationsReceived), true)
+        .addField('***D:R Ratio***', '≈ ' + Math.round(data.donations/data.donationsReceived), true)
         .addField('***Versus Info:***', `\`\`\`Versus Trophies: ${data.versusTrophies} \nBest Versus Trophies: ${data.bestVersusTrophies} \nVersus Battle Wins: ${data.versusBattleWins} \`\`\``)
         
         .setURL('http://bgctmcwarriors.ml/api/player?tag='+data.tag);
         if(data.heroes){
+            let str = '';
+            if(data.heroes[0]){
+                str +=  `${fn.emoji(bot,'barbarianking')} ${data.heroes[0].name} (${data.heroes[0].level}) \n`
+            }
+            if(data.heroes[1]){
+                str +=  `${fn.emoji(bot,'archerqueen')} ${data.heroes[1].name} (${data.heroes[1].level}) \n`
+            }
+            if(data.heroes[2]){
+                str +=  `${fn.emoji(bot,'grandwarden')} ${data.heroes[2].name} (${data.heroes[2].level}) \n`
+            }
 
+            embed.addField('***Heroes***', str);
         }
         if(data.clan){
         embed.addField(`***Clan***`, `\`\`\`${data.clan.name} \nTag: ${data.clan.tag} \nClan Level: ${data.clan.clanLevel}\`\`\``)
