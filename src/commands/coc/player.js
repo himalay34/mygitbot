@@ -18,7 +18,7 @@ exports.run = async(bot, msg, args, fn) => {
     const embed = fn.embed()
     console.log(tag)
     try {
-        await axios.get(url+tag).
+        await axios.get(url+tag)
             .then(res=>{
 
                 console.info(typeof(res.data))
