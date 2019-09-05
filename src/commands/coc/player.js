@@ -44,7 +44,7 @@ exports.run = async(bot, msg, args, fn) => {
         .addField(`***Defense Wins***`, `${data.defenseWins}`, true)
         .addField('***Donations***',  `:arrow_up: ${data.donations}`, true)
         .addField('***Donations Received***', `:arrow_down: ${data.donationsReceived}`, true)
-        .addField('***D:R Ratio***', Math.round(data.donations/data.donationsReceived), true)
+        .addField('***D:R Ratio***', '≈' + Math.round(data.donations/data.donationsReceived), true)
         .addField('***Versus Info:***', `\`\`\`Versus Trophies: ${data.versusTrophies} \nBest Versus Trophies: ${data.bestVersusTrophies} \nVersus Battle Wins: ${data.versusBattleWins} \`\`\``)
         
         .setURL('http://bgctmcwarriors.ml/api/player?tag='+data.tag);
