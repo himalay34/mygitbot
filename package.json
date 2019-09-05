@@ -1,7 +1,7 @@
 {
   "name": "cocbgctmc-bot",
   "version": "1.0.0",
-  "description": "The official Discord bot for BGCTMC WARRIORS",
+  "description": "The official Discord bot for BGCTMC WARRIORS.",
   "main": "index.js",
   "repository": "https://github.com/himalay34/mygitbot.git",
   "author": "Forhad Ahmed <forhad.ahmed@outlook.com>",
