@@ -37,13 +37,13 @@ exports.run = async(bot, msg, args, fn) => {
     
     // await msg.channel.send(embed)
 
-    let embd = fn.embed()
-    .setTitle("Total Servers: "+ data.length)
-    .setDescription(`\`\`\` ${table.table(members)} \`\`\``)
-    .setTimestamp()
-    .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
+    // let embd = fn.embed()
+    // .setTitle("Total Servers: "+ data.length)
+    // .setDescription(`\`\`\` ${table.table(members)} \`\`\``)
+    // .setTimestamp()
+    // .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
 
-    msg.channel.send(embd)
+    msg.channel.send(`\`\`\` ${table.table(members)} \`\`\``)
   } catch(err){
     throw err
   }
