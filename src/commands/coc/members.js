@@ -29,13 +29,13 @@ exports.run = async(bot, msg, args, fn) => {
             member += '❯ '+ items.name + ' ' + items.tag + '\n\n';
         });
 
-    let embed = fn.embed()
-      .setTitle("Members: ["+data.length+"]")
-      .setDescription(member)
-      .setTimestamp()
-      .setFooter(`Requested By ${msg.author.username}`, fn.avatarURL(msg));
+    // let embed = fn.embed()
+    //   .setTitle("Members: ["+data.length+"]")
+    //   .setDescription(member)
+    //   .setTimestamp()
+    //   .setFooter(`Requested By ${msg.author.username}`, fn.avatarURL(msg));
     
-    await msg.channel.send(embed)
+    // await msg.channel.send(embed)
 
     let embd = fn.embed()
     .setTitle("Total Servers: "+ data.length)
