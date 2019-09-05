@@ -36,7 +36,7 @@ exports.run = (client, message, args, tools) => {
         .catch(err => {
             embed.setTitle("Oops! Something went wrong")
             .setTimestamp()
-            .setFooter(`Requested by ${message.author.username}`, fn.avatarURL(message));
+            .setFooter(`Requested by ${message.author.username}`, tools.avatarURL(message));
             
             // send
             message.channel.send(embed);
