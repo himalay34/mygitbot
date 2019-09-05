@@ -45,9 +45,8 @@ exports.run = async(bot, msg, args, fn) => {
         .addField(`Attack Wins`, `${data.attackWins}`, true)
         .addField(`Defense Wins`, `${data.defenseWins}`, true)
         .addBlankField()
-        .addField(`Versus Trophies`, `:trophy: ${data.versusTrophies}`, true)
-        .addField(`Best Versus Trophies`, `:trophy: ${data.bestVersusTrophies}`, true)
-        .addField(`Versus Battle Wins`, `${data.versusBattleWins}`, true)
+        .addField('Versus Info:', `\`\`\`Versus Trophies: :trophy: ${data.versusTrophies} \nBest Versus Trophies: :trophy: ${data.bestVersusTrophies} \nVersus Battle Wins: ${data.versusBattleWins} \`\`\``)
+        
         .setURL('http://bgctmcwarriors.ml/api/player?tag='+data.tag);
         if(data.clan){
         embed.addField(`Clan`, `\`\`\`${data.clan.name} \nTag: ${data.clan.tag} \nClan Level: ${data.clan.clanLevel}\`\`\``)
