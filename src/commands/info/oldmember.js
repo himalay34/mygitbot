@@ -15,7 +15,7 @@ exports.run = async(bot, msg, args, fn) => {
             }
             return 0;
         })
-      .first().user;
+        .first().user;
 
     const { createdAt } = oldest;
     const age = formatDistance(createdAt, new Date());
