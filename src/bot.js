@@ -43,7 +43,7 @@ const managers = (bot.managers = new ManagerHandler()
   .add('messages/filter')
   // Ranks system
   .add('ranks/levels')
-  //.add('ranks/autorole')
+  .add('ranks/autorole')
 );
 
 // init manager
