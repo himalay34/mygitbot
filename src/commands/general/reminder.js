@@ -2,6 +2,7 @@ let chrono = require("chrono-node");
 var moment = require("moment");
 
 exports.run = async (client, message, args) => {
+  message.delete();
   let messagez = args.join(" ");
   if (messagez.length < 1)
     throw "Incorrect format. !reminder <minutes> <message>";
