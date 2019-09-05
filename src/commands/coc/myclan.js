@@ -27,7 +27,7 @@ exports.run = async(client, message, args, tools) => {
             .addField('War Frequency', row.warFrequency, true)
             //.setImage(row.badgeUrls.medium)
             .setTimestamp()
-            .setFooter(`Requested by ${message.author.username}`, fn.avatarURL(message));
+            .setFooter(`Requested by ${message.author.username}`, tools.avatarURL(message));
             
             // send
             message.channel.send(`Open in Clash of Clans https://link.clashofclans.com/?action=OpenClanProfile&tag=${encodeURIComponent(row.tag)}`)
