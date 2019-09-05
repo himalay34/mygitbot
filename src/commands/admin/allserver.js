@@ -7,9 +7,9 @@ exports.run = async(bot, msg, args, fn) => {
             .getServers()
             .catch(console.log)
 
-    let servers = [['ID', 'Name', 'Auto Topic']]
+    let servers = [['ID', 'Name', 'Auto Topic', 'Prefix']]
     data.rows.forEach(row => {
-        servers.push([row.id, row.doc.name, row.doc.allowSetTopic])
+        servers.push([row.id, row.doc.name, row.doc.allowSetTopic, row.doc.prefix])
     })
 
     let embed = fn.embed()
