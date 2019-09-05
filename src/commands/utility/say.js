@@ -12,7 +12,7 @@ exports.run = (bot, msg, args, fn) => {
         channel.send(embed)
     } else {
         str = args.join(' ')
-        str += `\n \n ${msg.guild.defaultRole.toString()}`
+        str += `\n \n -${msg.guild.defaultRole.toString()}`
 
         embed.setDescription(str)
             .setTimestamp()
