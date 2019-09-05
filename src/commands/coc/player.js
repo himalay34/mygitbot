@@ -20,6 +20,7 @@ exports.run = async(bot, msg, args, fn) => {
     console.log(tag)
     try {
         await axios.get(url+tag)
+            .then(res => JSON.parse(res.data))
             .then(res=>{
                 let data = JSON.parse(res.data)
                 console.info(typeof(res.data))
