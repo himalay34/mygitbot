@@ -31,7 +31,7 @@ exports.run = async(bot, msg, args) => {
 
     await msg.delete();
     await msg.channel
-      .send(":inbox_tray: Sent you a DM with help.")
+      .send(`:inbox_tray: ${msg.author} Sent you a DM with help.`)
       .then(m => m.delete(5000));
   }  finally {
       msg.channel.stopTyping();
