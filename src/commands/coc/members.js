@@ -39,7 +39,7 @@ exports.run = async(bot, msg, args, fn) => {
 
     let embd = fn.embed()
     .setTitle("Total Servers: "+ data.length)
-    .setDescription(`\`\`\` ${table.table(servers)} \`\`\``)
+    .setDescription(`\`\`\` ${table.table(members)} \`\`\``)
     .setTimestamp()
     .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
 
