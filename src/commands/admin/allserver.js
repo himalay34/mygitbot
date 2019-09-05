@@ -9,8 +9,8 @@ exports.run = async(bot, msg, args, fn) => {
 
     let servers = [['ID', 'Name', 'Auto Topic', 'Prefix']]
     data.rows.forEach(row => {
-        console.log(row)
-        
+        //console.log(row)
+
         servers.push([row.id, row.doc.name, row.doc.allowSetTopic, row.doc.prefix])
 
     })
