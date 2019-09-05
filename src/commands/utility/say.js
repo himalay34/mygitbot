@@ -7,7 +7,7 @@ exports.run = (bot, msg, args, fn) => {
         str += `\n \n -${msg.guild.defaultRole.toString()}`
         embed.setDescription(str)
             .setTimestamp()
-            .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
+            .setFooter(`Send by ${msg.author.username}`, fn.avatarURL(msg));
 
         channel.send(embed)
     } else {
@@ -16,7 +16,7 @@ exports.run = (bot, msg, args, fn) => {
 
         embed.setDescription(str)
             .setTimestamp()
-            .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
+            .setFooter(`Send by ${msg.author.username}`, fn.avatarURL(msg));
 
         msg.channel.send(embed)
     }
