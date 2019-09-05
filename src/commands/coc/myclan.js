@@ -40,7 +40,8 @@ exports.run = (client, message, args, tools) => {
             
             // send
             message.channel.send(embed);
-        })
+        }) //axios end
+    
 };
 
 exports.info = {
