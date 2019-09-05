@@ -86,5 +86,6 @@ exports.info = {
     name: 'player',
     usage: 'player <tag>',
     description: 'Show COC Player Profile',
-    group: 'coc'
+    group: 'coc',
+    perms: ['READ_MESSAGES', 'SEND_MESSAGES']
 };
