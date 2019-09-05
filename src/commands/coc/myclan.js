@@ -34,12 +34,14 @@ exports.run = async(client, message, args, tools) => {
             message.channel.send(embed);
         })
         .catch(err => {
-            embed.setTitle("Oops! Something went wrong")
-            .setTimestamp()
-            .setFooter(`Requested by ${message.author.username}`, tools.avatarURL(message));
+            // embed.setTitle("Oops! Something went wrong")
+            // .setTimestamp()
+            // .setFooter(`Requested by ${message.author.username}`, tools.avatarURL(message));
             
-            // send
-            message.channel.send(embed);
+            // // send
+            // message.channel.send(embed);
+            console.log(err)
+            throw err
         }) //axios end
     
 };
