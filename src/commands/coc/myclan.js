@@ -1,13 +1,13 @@
 let axios = require('axios')
 let url = "http://bgctmcwarriors.ml/api/myclan"
 
-exports.run = (client, message, args, tools) => {
+exports.run = async(client, message, args, tools) => {
     // delete user message cz we bot will supply the message
-    message.delete().catch(O_o => {});
+    await message.delete().catch(O_o => {});
     
     let embed = tools.embed()    
     
-    axios.get(url)
+    await axios.get(url)
         .then(res => {
             let row = res.data
             embed.setColor('#0099ff')
