@@ -21,10 +21,10 @@ exports.run = async(bot, msg, args, fn) => {
     
     if(data.reason == 'notFound') throw 'Sorry, Clan '+data.reason 
     
-    let members = [['ID', 'Name', 'Tag', 'Role']]
+    let members = [['Name', 'Tag', 'Role']]
     let member = ' ';
         data.forEach(items => {
-            members.push([items.clanRank, items.name, items.tag, items.role])
+            members.push([ items.name, items.tag, items.role])
 
             member += '❯ '+ items.name + ' ' + items.tag + '\n\n';
         });
