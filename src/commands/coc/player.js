@@ -5,7 +5,7 @@ exports.run = async(bot, msg, args, fn) => {
     
     let tag = ''
     
-    if (!args[0].length){
+    if (!args[0]){
         tag = '#8VQUCLJQ'//implement attached id here
     } else {
         tag = args[0]// grab clan tag
