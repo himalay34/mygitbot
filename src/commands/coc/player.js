@@ -3,26 +3,26 @@ const got = require('got');
 const axios = require('axios');
 
 exports.run = async(bot, msg, args, fn) => {
-  const embed = fn.embed()
-      
-  try {
-    if (!args[0])
-        throw "You have to provide player tag"
+    const embed = fn.embed()
+    msg.delete()
+    try {
+        if (!args[0])
+            throw "You have to provide player tag"
     
         //tag = '2g2qrj8qg'//'2Y0L98GRV'//'#8VQUCLJQ'//V9LYR8YY
     
-    tag = args[0]// grab clan tag
+        tag = args[0]// grab clan tag
     
     
-    // check is it starts with #, then remove #
-    if(tag[0].startsWith == '#')
-        tag = tag.substring(1);
+        // check is it starts with #, then remove #
+        if(tag[0].startsWith == '#')
+            tag = tag.substring(1);
   
-    let url = api + tag
-    console.log(url)
+        let url = api + tag
+        //console.log(url)
         
-      const response = await got(url, { json: true });
-        console.log(typeof(response.body))
+        const response = await got(url, { json: true });
+            //console.log(typeof(response.body))
         let data = response.body
     
         if(data.reason) throw 'Player not found due to: '+ data.message
