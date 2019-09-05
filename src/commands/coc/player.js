@@ -30,7 +30,7 @@ exports.run = async(bot, msg, args, fn) => {
       //console.log(data)
       await embed
         //.setTitle(`${data.name} ${data.tag}`)
-        .setAuthor(data.name + ' '+ data.tag, data.league.iconUrls.tiny, url)
+        .setAuthor('***'+data.name + '*** '+ data.tag, data.league.iconUrls.tiny, url)
         .addField(`❯ ***Town Hall Level***`, `${data.townHallLevel}`, true)
         .addField(`❯ ***Builder Hall Level***`, `${data.builderHallLevel}`, true)
         .addField('❯ ***Exp Level***', data.expLevel, true)
