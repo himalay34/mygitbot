@@ -24,9 +24,7 @@ exports.run = async(bot, msg, args, fn) => {
         const response = await got(url, { json: true });
             //console.log(typeof(response.body))
         let data = response.body
-        console.log('\n\n------ begin:  ------')
-        console.log(data)
-        console.log('------ end:  ------\n\n')
+        
         if(data.reason) throw 'Player not found due to: '+ data.message
     
       //console.log(data)
