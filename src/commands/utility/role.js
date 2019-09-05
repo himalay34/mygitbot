@@ -36,5 +36,7 @@ exports.run = async (bot, message, args) => {
 exports.info = {
     name: 'role',
     usage: 'role [name]',
-    description: 'Lets you assign or unassign yourself roles.'
+    description: 'Lets you assign or unassign yourself roles.',
+    ownerOnly: true,
+    hidden: true
 };

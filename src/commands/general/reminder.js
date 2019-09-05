@@ -57,8 +57,6 @@ exports.run = async (client, message, args) => {
 exports.info = {
   name: "remind",
   usage: "remind <minutes> <message>",
-  description:
-    "remind [minutes] [text] - Will send you a reminder for [text] in [time]",
-  hidden: false,
+  description: "remind [minutes] [text] - Will send you a reminder for [text] in [time]",
   group: "general"
 };
