@@ -1,8 +1,7 @@
 const stripIndents = require("common-tags").stripIndents;
 
-//const pinger = require('minecraft-pinger');
-
 exports.run = async (bot, message, args, fn) => {
+  console.log("serverinfo")
   const verificationLevels = ["None", "Low", "Medium", "Insane", "Extreme"];
   const role = message.guild.roles.size;
   const roles = message.guild.roles.map(e => e).join(", ");
