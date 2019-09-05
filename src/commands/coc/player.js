@@ -45,17 +45,17 @@ exports.run = async(bot, msg, args, fn) => {
         .addField(`Attack Wins`, `${data.attackWins}`, true)
         .addField(`Defense Wins`, `${data.defenseWins}`, true)
         .addBlankField()
-        .addField('Versus Info:', `\`\`\`Versus Trophies: :trophy: ${data.versusTrophies} \nBest Versus Trophies: :trophy: ${data.bestVersusTrophies} \nVersus Battle Wins: ${data.versusBattleWins} \`\`\``)
+        .addField('Versus Info:', `\`\`\`**Versus Trophies:** ${data.versusTrophies} \n**Best Versus Trophies:** ${data.bestVersusTrophies} \n**Versus Battle Wins:** ${data.versusBattleWins} \`\`\``)
         
         .setURL('http://bgctmcwarriors.ml/api/player?tag='+data.tag);
         if(data.clan){
-        embed.addField(`Clan`, `\`\`\`${data.clan.name} \nTag: ${data.clan.tag} \nClan Level: ${data.clan.clanLevel}\`\`\``)
+        embed.addField(`***Clan***`, `\`\`\`**${data.clan.name}** \n**Tag**: ${data.clan.tag} \n**Clan Level:** ${data.clan.clanLevel}\`\`\``)
         .addField(`Role`, `:shield: ${data.role}`, true);
         }
         
     if(data.legendStatistics){
           embed
-          .addField(`Legend League Statistics`,`\`\`\`Best Season: ${data.legendStatistics.bestSeason.id} \nTrophies: ${data.legendStatistics.bestSeason.trophies} \nRank: ${data.legendStatistics.bestSeason.rank} \`\`\``);
+          .addField(`***Legend League Statistics***`,`\`\`\`**Best Season:** ${data.legendStatistics.bestSeason.id} \n**Trophies:** ${data.legendStatistics.bestSeason.trophies} \n**Rank:** ${data.legendStatistics.bestSeason.rank} \`\`\``);
         }
     
     embed.setTimestamp()
