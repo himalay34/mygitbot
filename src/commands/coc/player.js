@@ -25,9 +25,9 @@ exports.run = async(bot, msg, args, fn) => {
         console.log(typeof(response.body))
         let data = response.body
     
-        if(data.reason == 'notFound') throw 'Player not found with tag: '+ tag
+        if(data.reason) throw 'Player not found due to: '+ data.message
     
-      console.log(data)
+      //console.log(data)
       await embed
         //.setTitle(`${data.name} ${data.tag}`)
         .setAuthor(data.name + ' '+ data.tag, data.league.iconUrls.tiny, url)
