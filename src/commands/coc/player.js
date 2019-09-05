@@ -1,36 +1,77 @@
-const url = 'http://bgctmcwarriors.ml/api/raw?uri=players/' //2Y0L98GRV
+const api = 'http://bgctmcwarriors.ml/api/player?tag='//2Y0L98GRV
 const got = require('got');
+const axios = require('axios');
+
 
 exports.run = async(bot, msg, args, fn) => {
-    msg.delete().catch(O_o => {});
+  const embed = fn.embed()
+      
+  try {
+    if (!args[0])
+        throw "You have to provide player tag"
     
-    let tag = ''
+        //tag = '2g2qrj8qg'//'2Y0L98GRV'//'#8VQUCLJQ'//V9LYR8YY
     
-    if (!args[0]){
-        tag = '#8VQUCLJQ'//implement attached id here
-    } else {
-        tag = args[0]// grab clan tag
-    }
+    tag = args[0]// grab clan tag
+    
     
     // check is it starts with #, then remove #
-    if(tag[0] == '#')
+    if(tag[0].startsWith == '#')
         tag = tag.substring(1);
+  
+    let url = api + tag
+    console.log(url)
         
-    const embed = fn.embed()
-    console.log(tag)
-    try {
-        const response = await got(url+tag, { json: true });
-        let data = JSON.parse(response.body);
-
-        msg.channel.send(data)
+      const response = await got(url, { json: true });
+        console.log(typeof(response.body))
+        let data = response.body
+    
+        if(data.reason == 'notFound') throw 'Player not found with tag: '+ tag
+    
+      console.log(data)
+      await embed
+        //.setTitle(`${data.name} ${data.tag}`)
+        .setAuthor(data.name + ' '+ data.tag, data.league.iconUrls.tiny, url)
+        .addField(`Town Hall Level`, `${data.townHallLevel}`, true)
+        .addField(`Builder Hall Level`, `${data.builderHallLevel}`, true)
+        .addField('Exp Level', data.expLevel, true)
+        .addField(`War Stars`, `${data.warStars}`, true)
+        .addField(`League`, `${data.league.name}`, true)
+        .addField('Trophies', ':trophy: '+data.trophies, true)
+        .addField('Best Trophies', ':trophy: '+data.bestTrophies, true)
+        .addField('Donations',  `:arrow_up: ${data.donations}`, true)
+        .addField('Donations Received', `:arrow_down: ${data.donationsReceived}`, true)
+        .addField('D:R Ratio', (data.donations/data.donationsReceived), true)
+        .addField(`Attack Wins`, `${data.attackWins}`, true)
+        .addField(`Defense Wins`, `${data.defenseWins}`, true)
+        .addField(`Versus Trophies`, `:trophy: ${data.versusTrophies}`, true)
+        .addField(`Best Versus Trophies`, `:trophy: ${data.bestVersusTrophies}`, true)
+        .addField(`Versus Battle Wins`, `${data.versusBattleWins}`, true)
+        .setURL('http://bgctmcwarriors.ml/api/player?tag='+data.tag);
+        if(data.clan){
+        embed.addField(`Clan`, `\`\`\`${data.clan.name} \nTag: ${data.clan.tag} \nClan Level: ${data.clan.clanLevel}\`\`\``,true)
+        .addField(`Role`, `:shield: ${data.role}`, true);
+        }
+        
+    if(data.legendStatistics){
+          embed.addBlankField()
+          .addField(`Legend League Statistics`,`\`\`\`Best Season: ${data.legendStatistics.bestSeason.id} \nRank: ${data.legendStatistics.bestSeason.rank} \nTrophies: ${data.legendStatistics.bestSeason.trophies} \`\`\``);
+        }
+    
+    embed.setTimestamp()
+        .setFooter(`Requested By ${msg.author.username}`, data.league.iconUrls.small);
+    
+        await msg.channel.send(embed)
+    
     } catch (error) {
-        throw error
+        throw error;
+        //=> 'Internal server error ...'
     }
 };
 
 exports.info = {
     name: 'player',
-    usage: 'player [tag]',
-    description: 'Shows player informations',
+    usage: 'player <tag>',
+    description: 'Show COC Player Profile',
     group: 'coc'
 };
