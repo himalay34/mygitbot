@@ -54,8 +54,8 @@ exports.run = async(bot, msg, args, fn) => {
         }
         
     if(data.legendStatistics){
-          embed.addBlankField()
-          .addField(`Legend League Statistics`,`\`\`\`Best Season: ${data.legendStatistics.bestSeason.id} \nRank: ${data.legendStatistics.bestSeason.rank} \nTrophies: ${data.legendStatistics.bestSeason.trophies} \`\`\``);
+          embed
+          .addField(`Legend League Statistics`,`\`\`\`Best Season: ${data.legendStatistics.bestSeason.id} \nTrophies: ${data.legendStatistics.bestSeason.trophies} \nRank: ${data.legendStatistics.bestSeason.rank} \`\`\``);
         }
     
     embed.setTimestamp()
