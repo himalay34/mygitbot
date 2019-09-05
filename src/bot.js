@@ -38,6 +38,7 @@ const managers = (bot.managers = new ManagerHandler()
   .add("data")
   .add("commands")
   .add("logger")
+  .add('settings')
   // Message moderation
   .add("messages/badword")
   .add('messages/filter')
