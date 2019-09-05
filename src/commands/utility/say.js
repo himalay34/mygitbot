@@ -4,7 +4,7 @@ exports.run = (bot, msg, args, fn) => {
     let embed = fn.embed()
     if (channel) {
         str = args.slice(1).join(' ')
-        str += `\n \n ${msg.guild.defaultRole.toString()}`
+        str += `\n \n -${msg.guild.defaultRole.toString()}`
         embed.setDescription(str)
             .setTimestamp()
             .setFooter(`Requested by ${msg.author.username}`, fn.avatarURL(msg));
