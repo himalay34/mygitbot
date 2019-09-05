@@ -27,7 +27,7 @@ exports.run = (client, message, args, tools) => {
             .addField('War Frequency', row.warFrequency, true)
             //.setImage(row.badgeUrls.medium)
             .setTimestamp()
-            .setFooter(`Requested by ${message.author.username}`, 'https://i.imgur.com/vEjbXnl.jpg');
+            .setFooter(`Requested by ${message.author.username}`, fn.avatarURL(message));
             
             // send
             message.channel.send(`Open in Clash of Clans https://link.clashofclans.com/?action=OpenClanProfile&tag=${encodeURIComponent(row.tag)}`)
@@ -36,7 +36,7 @@ exports.run = (client, message, args, tools) => {
         .catch(err => {
             embed.setTitle("Oops! Something went wrong")
             .setTimestamp()
-            .setFooter('Gpouch', 'https://i.imgur.com/vEjbXnl.jpg');
+            .setFooter(`Requested by ${message.author.username}`, fn.avatarURL(message));
             
             // send
             message.channel.send(embed);
