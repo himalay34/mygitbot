@@ -50,20 +50,20 @@ exports.run = async(bot, msg, args, fn) => {
         if(data.heroes){
             let str = '';
             if(data.heroes[0]){
-                str +=  `${fn.emoji(bot,'barbarianking')} ${data.heroes[0].name} (${data.heroes[0].level}) \n`
+                str +=  `${fn.emoji(bot,'barbarianking')} ${data.heroes[0].name} (${data.heroes[0].level})  `
             }
             if(data.heroes[1]){
-                str +=  `${fn.emoji(bot,'archerqueen')} ${data.heroes[1].name} (${data.heroes[1].level}) \n`
+                str +=  `${fn.emoji(bot,'archerqueen')} ${data.heroes[1].name} (${data.heroes[1].level})  `
             }
             if(data.heroes[2]){
-                str +=  `${fn.emoji(bot,'grandwarden')} ${data.heroes[2].name} (${data.heroes[2].level}) \n`
+                str +=  `${fn.emoji(bot,'grandwarden')} ${data.heroes[2].name} (${data.heroes[2].level})  `
             }
 
             embed.addField('***Heroes***', str);
         }
         if(data.clan){
         embed.addField(`***Clan***`, `\`\`\`${data.clan.name} \nTag: ${data.clan.tag} \nClan Level: ${data.clan.clanLevel}\`\`\``)
-        .addField(`Role`, `:shield: ${data.role}`, true);
+        .addField(`***Role***`, `:shield: ${data.role}`, true);
         }
         
     if(data.legendStatistics){
