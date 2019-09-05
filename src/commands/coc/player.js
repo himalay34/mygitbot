@@ -1,5 +1,5 @@
 const url = 'http://bgctmcwarriors.ml/api/raw?uri=players/' //2Y0L98GRV
-const axios = require('axios')
+const got = require('got');
 
 exports.run = async(bot, msg, args, fn) => {
     msg.delete().catch(O_o => {});
@@ -19,14 +19,10 @@ exports.run = async(bot, msg, args, fn) => {
     const embed = fn.embed()
     console.log(tag)
     try {
-        await axios.get(url+tag)
-            .then(res => JSON.parse(res.data))
-            .then(res=>{
-                let data = JSON.parse(res.data)
-                console.info(typeof(res.data))
-                console.info(res.data)
-            })
+        const response = await got(url+tag, { json: true });
+        let data = JSON.parse(response.body);
 
+        msg.channel.send(data)
     } catch (error) {
         throw error
     }
