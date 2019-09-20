@@ -88,7 +88,7 @@ class CommandManager extends Manager {
         // get custom config for prefix per server
         let customPrefix = this.bot.servers.get(message.guild.id)
         var finalPrefix = prefix
-       if(customPrefix.prefix.length > 0 && customPrefix !== prefix) finalPrefix = customPrefix.prefix
+        if(customPrefix.prefix.length > 0 && customPrefix !== prefix) finalPrefix = customPrefix.prefix
         
         let out = '';
 
@@ -122,6 +122,7 @@ class CommandManager extends Manager {
     }
 
     async executeCommand(command, message, args) {
+        
         const permMessage = this._checkPermissions(message.member, command);
         if (permMessage) {
             return message.channel.send(`:no_entry_sign: ${permMessage}`)
@@ -138,6 +139,10 @@ class CommandManager extends Manager {
                 return this.showHelp(command.info.name, message);
             }
 
+            if (command.info.minArgs && args.length < command.info.minArgs) {
+                return this.showHelp(command.info.name, message);
+            }
+
             message.channel.send(tools.embed().setDescription(`:x: ${displayMessage}`))
                 .then(m => m.delete(5000));
         }
@@ -145,7 +150,12 @@ class CommandManager extends Manager {
 
     _checkPermissions(member, command) {
         // command dissable, so do nothing
-        if(command.info.disabled) return 'Sorry, command is dissabled by bot owner.';
+        if (command.info.disabled)
+            return 'Sorry! \ncommand is dissabled by bot owner.';
+
+        //guildOnly
+        if (command.info.guildOnly && !message.guild)
+            return `Sorry! \nThat command can only be used in guilds.`;
 
         if (command.info.perms) {
             const perms = [].concat(command.info.perms);

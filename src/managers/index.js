@@ -107,6 +107,7 @@ class ManagerHandler {
         this.bot = bot;
 
         bot.on('message', message => {
+            //message filter implement here <<
             if (!message.guild || !message.member || message.author.id === bot.user.id || message.author.bot) {
                 return;
             }
