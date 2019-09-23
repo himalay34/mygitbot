@@ -1,22 +1,34 @@
-let Event = require('../base/event.js')
-module.exports = class event extends Event {
-    
-    async run () {
-      let client = this.client;
-      
-      if(!client.user.bot) {
-          client.logger.log("Automating normal user accounts (generally called \"self-bots\") outside of the OAuth2/bot API is forbidden, and can result in an account termination if found.", "error");
-          client.logger.log("https://support.discordapp.com/hc/en-us/articles/115002192352-Automated-user-accounts-self-bots-", "error");
-          process.exit(0);
-      }
-      console.log('ready')
+const Discord = require("discord.js")
+const chalk = require("chalk");
+module.exports = class {
 
-      const updateDisplay = async () => {  
+    constructor (client) {
+        this.client = client;
+        //console.log(client)
+    }
+
+    async run () {
+        //global.log('ready event starts')
+        let client = this.client;
+
+        let allServers = await client.managers
+            .get("server")
+            .getServers()
+            .catch(console.log)
+        
+        // add to bot
+        client.servers = new Discord.Collection();
+        if (allServers.total_rows > 0) {
+            allServers.rows.forEach(r => {
+                client.servers.set(r.id, r.doc);
+            });
+        } //end add to bot
+        //
+        const updateDisplay = async () => {  
             //global.log("tick tok")
             client.guilds.forEach(guild => {
               // get guild config
-              let gConfig = client.config.get(guild.id)
-              
+              let gConfig = client.servers.get(guild.id)
               //stats data
               let totalMember = guild.memberCount
               let [bots, user] = guild.members.partition(u => u.user.bot);
@@ -42,12 +54,20 @@ module.exports = class event extends Event {
           })
           
           }; // end updateDisplay
-      client.setInterval(updateDisplay, 15000);
+        //
+        client.setInterval(updateDisplay, 15000);
         updateDisplay();
-      //const manager = await client.managers.get("server");
-      
-      client.logger.info(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "ready");
-      console.log(client.settings)
-      client.user.setActivity(`${global.config.prefix}help`, {type: "PLAYING"});
-    }
+
+        client.generateInvite([
+            "MANAGE_MESSAGES",
+            "MANAGE_CHANNELS",
+            "BAN_MEMBERS",
+            "KICK_MEMBERS"
+            ])
+            .then(invite => console.log(chalk.blue(invite))); // end generate invite
+            
+        client.user.setActivity(`bgctmcwarriors.ml | ${config.prefix}help`);
+        
+        global.log(`${client.user.username} Bot has loaded successfully. We're in business!`)
+    } // end run
 }

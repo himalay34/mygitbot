@@ -1,6 +1,7 @@
 const Manager = require("./manager");
-
-const {servers} = require('../../pouch')
+const PouchDB = require('pouchdb');
+const url = process.env.BASEURL;
+const dbPath = `http://${process.env.USER}:${process.env.PASSWORD}@${url}/servers`;
 
 class ServerManager extends Manager {
   
@@ -9,8 +10,7 @@ class ServerManager extends Manager {
   }
 
   preInit() {
-    //this.db = new PouchDB("servers");
-    this.db = servers;
+    this.db = new PouchDB(dbPath);
   }
 
   async createServer(id, options = {}) {
@@ -22,7 +22,7 @@ class ServerManager extends Manager {
         allowSetTopic: true,
         mainChannelId: "",
         welcomeChannelId: "",
-        serverLogChannelId: ""
+        LogChannelId: ""
       },
       options
     );
@@ -92,6 +92,28 @@ class ServerManager extends Manager {
       // Just return undefined if the profile isn't found
       throw err;
     }
+  }
+  /**
+  * get custom config for a guild
+   */
+  async getSettings(guild){
+    // get default config
+    const defaults = this.bot.managers.get("config").config || {};
+    let guildData;
+    
+    try { 
+      guildData = await this.db.get(guild.id);
+    } catch(er){
+      guildData = {}
+    }
+
+    const returnObject = {};
+
+    Object.keys(defaults).forEach((key) => {
+      returnObject[key] = guildData[key] ? guildData[key] : defaults[key];
+    });
+    
+    return returnObject;
   }
 }
 

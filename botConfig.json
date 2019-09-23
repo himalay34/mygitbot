@@ -1,12 +1,16 @@
 {
   "name": "BGCTMC WARRIORS Bot",
-  "prefix": "-",
-  "color": [
-    185,220,255
-  ],
+  "prefix": "B.",
+  "color": [185,220,255],
   "token": "",
   "joinMessage": "Welcome to the offical BGCTMC WARRIORS server, {user}!",
-  "statusFormat": "🙎‍ Members: {members} [ Users: {users}, Bot: {bots} ] \n🌍 Online: {online} | Server Link - https://discord.gg/9xarpaf",
-  "ownerID": "518167396691869696",
-  "mainChannel": "617711906471411712"
+  "statusFormat": "🙎‍ Members: {members} [ Users: {users}, Bot: {bots} ] \n🌍 Online: {online} | Server Link - {serverLink}",
+  "botOwnerID": "563587297858027521",
+  "botLogGuildId": "564711943987003392",
+  "botLogChannel": "615282090329767941",
+  "mainChannelId": "",
+  "welcomeChannelId": "",
+  "LogChannelId": "",
+  "autoRole": "User",
+  "autoTopic": false
 }

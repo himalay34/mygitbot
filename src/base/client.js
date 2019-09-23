@@ -1,12 +1,4 @@
 const { Client, Collection, Util, WebhookClient } = require('discord.js');
-const winston = require('winston');
-const path = require('path');
-let dir = path.resolve(__dirname, '../../', 'store')
-const PouchDB = require('pouchdb').defaults({prefix: dir+'/'});
-const chalk = require("chalk");
-const util = require("util")
-const fs = require("fs")
-const readdir = util.promisify(fs.readdir)
 
 module.exports = class FabClient extends Client {
   constructor(options) {
@@ -62,31 +54,11 @@ module.exports = class FabClient extends Client {
     return text;
   }
   
-  // getSettings merges the client defaults with the guild settings. guild settings in
-  // enmap should only have *unique* overrides that are different from defaults.
-  getSettings (guild) {
-    const defaults = this.config.defaultSettings || {};
-    const guildData = this.settings.get(guild.id) || {};
-    const returnObject = {};
-    Object.keys(defaults).forEach((key) => {
-      returnObject[key] = guildData[key] ? guildData[key] : defaults[key];
-    });
-    return returnObject;
+  getConfigs (guild) {
+    return this.cosettingsnfig.get(guild.id) || {};
   }
 
-  // writeSettings overrides, or adds, any configuration item that is different
-  // than the defaults. This ensures less storage wasted and to detect overrides.
-  writeSettings (id, newSettings) {
-    const defaults = this.settings.get("default");
-    let settings = this.settings.get(id);
-    if (typeof settings != "object") settings = {};
-    for (const key in newSettings) {
-      if (defaults[key] !== newSettings[key]) {
-        settings[key] = newSettings[key];
-      } else {
-        delete settings[key];
-      }
-    }
-    this.settings.set(id, settings);
+  setConfigs (id, value) {
+    this.settings.set(id, value);
   }
 }
