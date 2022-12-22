@@ -32,7 +32,7 @@
     "fs-readdir-recursive": "^1.1.0",
     "got": "^9.6.0",
     "helmet": "^3.20.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "level": "^5.0.1",
     "leven": "^2.1.0",
     "moment": "^2.24.0",
